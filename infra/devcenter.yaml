@@ -1,0 +1,42 @@
+# yaml-language-server: $schema=./devcenter.schema.json
+
+orgName: Velocity-Platforms
+environmentTypes:
+  - name: Non-Production
+    tags:
+      env: non-prod
+  - name: Production
+    tags:
+      env: prod
+catalogs:
+  - name: WV-Devcenter-Catalog
+    repo: https://github.com/willvelida/dev-catalog-sample.git
+    branch: main
+    path: Environments
+    secretIdentifier: ""
+projects:
+  - name: Test-Project
+    members: [
+      {
+        user: "",
+        role: "DevCenter Project Admin"
+      }
+    ]
+    environmentTypes:
+      - name: Non-Production
+        deploymentTargetId: ""
+        roles: ["Owner"]
+        members: []
+        tags:
+          project: Test-Project
+      - name: Production
+        deploymentTargetId: ""
+        roles: ["Contributor"]
+        members: [
+          {
+            user: "",
+            role: "DevCenter Project Admin"
+          }
+        ]
+        tags:
+          project: Test-Project
